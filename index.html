@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Performance</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #282c34;
+      color: #61dafb;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+    }
+
+    .animation-container {
+      text-align: center;
+    }
+
+    .animated-text {
+      font-size: 2em;
+      font-weight: bold;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid #61dafb;
+      animation: typing 3s steps(40) infinite;
+    }
+
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+  </style>
+  <script>
+    // JavaScript to redirect after 6 seconds
+    setTimeout(function() {
+      window.location.href = "newpage.html"; // Replace "newpage.html" with the URL of your new page
+    }, 3000);
+  </script>
+</head>
+<body>
+  <div class="animation-container">
+    <h1 class="animated-text">Student Performance</h1>
+  </div>
+</body>
+</html>

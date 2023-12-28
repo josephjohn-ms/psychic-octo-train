@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear Graph</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: #454A8A;
+            color: #fff;
+        }
+
+        canvas {
+            border: 1px solid #ddd;
+            margin-top: 20px;
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        label {
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        input {
+            width: 100px;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #E52E82;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border: 1px solid #2C2D5D;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        th, td {
+            border: 1px solid #2C2D5D;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #2C2D5D;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #2C2D5D;
+            color: #fff;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #454A8A;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Linear Graph Generator</h1>
+
+    <div class="input-container">
+        <label for="value1">Semester 1 marks </label>
+        <input type="number" id="value1" min="0" max="100" required>
+        
+        <label for="value2">Semester 2 marks </label>
+        <input type="number" id="value2" min="0" max="100" required>
+
+        <label for="value3">Semester 3 marks</label>
+        <input type="number" id="value3" min="0" max="100" required>
+    </div>
+
+    <button onclick="generateGraph()">Generate Graph</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Semester</th>
+                <th>Marks</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Semester 1</td>
+                <td id="mark1"></td>
+            </tr>
+            <tr>
+                <td>Semester 2</td>
+                <td id="mark2"></td>
+            </tr>
+            <tr>
+                <td>Semester 3</td>
+                <td id="mark3"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <canvas id="linearGraph" width="400" height="200"></canvas>
+
+    <script>
+        function generateGraph() {
+            var value1 = parseInt(document.getElementById('value1').value);
+            var value2 = parseInt(document.getElementById('value2').value);
+            var value3 = parseInt(document.getElementById('value3').value);
+
+            document.getElementById('mark1').innerHTML = value1;
+            document.getElementById('mark2').innerHTML = value2;
+            document.getElementById('mark3').innerHTML = value3;
+
+            var canvas = document.getElementById('linearGraph');
+            var ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Assuming a simple linear graph for illustration
+            ctx.beginPath();
+            ctx.moveTo(50, 150 - value1);
+            ctx.lineTo(200, 150 - value2);
+            ctx.lineTo(350, 150 - value3);
+            ctx.strokeStyle = '#007BFF'; // Blue color
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // Label x-axis
+            for (let i = 0; i <= 3; i++) {
+                ctx.fillText(i * 100, 50 + i * 100, 170);
+            }
+
+            // Label y-axis
+            for (let i = 0; i <= 5; i++) {
+                ctx.fillText(i * 20, 30, 150 - i * 30);
+            }
+        }
+    </script>
+</body>
+</html>
